@@ -125,10 +125,15 @@ public class Sudoku {
      */
     public void modificarElemento(int fila, int columna, int elemento) throws SudokuException {
         if ((fila >= 0 && fila < 9) && (columna >= 0 && columna < 9)) {
-            if(puedoInsertar(fila, columna, elemento)) {
-                sudoku.get(fila).set(columna, elemento);
-            } else {
-                throw new SudokuException("El número ya se encuentra en la fila, columna o cuadrante seleccionado.");
+            if(sudoku.get(fila).get(columna) == 0) {
+                if(puedoInsertar(fila, columna, elemento)) {
+                    sudoku.get(fila).set(columna, elemento);
+                } else {
+                    throw new SudokuException("El número ya se encuentra en la fila, columna o cuadrante seleccionado.");
+                }
+            }
+            else {
+                throw new SudokuException("La casilla seleccionada ya está rellena, borre el número para poder insertar otro.");
             }
         } else {
             throw new SudokuException("Se debe introducir filas y columnas entre 1 y 9.");
