@@ -16,11 +16,16 @@ public class Sudoku {
 
     // Variables privadas de la clase
     private ArrayList<ArrayList<Integer>> sudoku;
-
+    /**
+     * Contructor por defecto
+     */
     public Sudoku() {
         sudoku = new ArrayList<>();
     }
-
+    
+    /**
+     * Inicializa el sudoku añadiendo los números al array
+     */
     public void inicializar() {
         ArrayList<Integer> fila1 = new ArrayList<>();
         ArrayList<Integer> fila2 = new ArrayList<>();
@@ -82,14 +87,18 @@ public class Sudoku {
         
         
     }
-
+    
+    /**
+     * Da forma gráfica al sudoku y lo devuelve en string
+     * @return Devuelve el array sudoku en forma de string
+     */
     @Override
     public String toString() {
         String resultadoFinal = "||-----||-----||-----||\n";
         for (int i = 0; i < 9; i++) {
             resultadoFinal += ("||");
             for (int j = 0; j < 9; j++) {
-                if ((int) sudoku.get(i).get(j) == 0) {
+                if (sudoku.get(i).get(j) == 0) {
                     resultadoFinal += (" |");
                 } else {
                     resultadoFinal += (sudoku.get(i).get(j) + "|");
@@ -106,7 +115,14 @@ public class Sudoku {
         }
         return resultadoFinal;
     }
-
+    
+    /**
+     * Comprueba si se puede modificar el elemento, si se puede lo modifica, si no lanza una excepción
+     * @param fila Fila que contiene el elemento a modificar
+     * @param columna Columna que contiene el elemento a modificar
+     * @param elemento Elemento a escribir
+     * @throws SudokuException Excepción lanzada cuando se introduce una columna o fila fuera del array, o si no se puede introducir ese elemento 
+     */
     public void modificarElemento(int fila, int columna, int elemento) throws SudokuException {
         if ((fila >= 0 && fila < 9) && (columna >= 0 && columna < 9)) {
             if(puedoInsertar(fila, columna, elemento)) {
@@ -118,11 +134,23 @@ public class Sudoku {
             throw new SudokuException("Se debe introducir filas y columnas entre 1 y 9.");
         }
     }
-
+    
+    /**
+     * Sustituye el elemento en esa posición por un cero que luego se representa como vacio
+     * @param fila Fila que contiene el elemento a modificar
+     * @param columna Columna que contiene el elemento a modificar
+     */
     public void vaciarElemento(int fila, int columna) {
         sudoku.get(fila).set(columna, 0);
     }
-
+    
+    /**
+     * Comprueba que el elemento a escribir no esté en esa fila
+     * @param fila Fila que contiene el elemento a modificar
+     * @param elemento Elemento a escribir
+     * @return true - si el elemento no está en la fila
+     * @return false - si el elemento ya se encuentra en la fila
+     */
     private boolean comprobarFila(int fila, int elemento) {
         boolean resultado = true;
         for (int i = 0; i < sudoku.get(fila).size(); i++) {
@@ -132,7 +160,14 @@ public class Sudoku {
         }
         return resultado;
     }
-
+    
+    /**
+     * Comprueba que el elemento a escribir no esté en esa columna
+     * @param columna Columna que contiene el elemento a modificar
+     * @param elemento Elemento a escribir
+     * @return true - si el elemento no está en la columna
+     * @return false - si el elemento ya se encuentra en la columna
+     */
     private boolean comprobarColumna(int columna, int elemento) {
         boolean resultado = true;
         for (int i = 0; i < sudoku.get(0).size(); i++) {
@@ -142,7 +177,13 @@ public class Sudoku {
         }
         return resultado;
     }
-
+    
+    /**
+     * Comprueba el cuadrante al que pertenece esa fila y columna
+     * @param fila Fila que contiene el elemento a modificar
+     * @param columna Columna que contiene el elemento a modificar
+     * @return devuelve el número del cuadrante en que se encuentras
+     */
     public int numeroCuadrante(int fila, int columna)
     {
         int nquad;
@@ -194,6 +235,14 @@ public class Sudoku {
         return nquad;
     }
     
+    /**
+     * Comprueba que el elemento a escribir no esté en ese cuadrante
+     * @param fila Fila que contiene el elemento a modificar
+     * @param columna Columna que contiene el elemento a modificar
+     * @param elemento Elemento a escribir
+     * @return true - si el elemento no está en el cuadrante
+     * @return false - si el elemento ya se encuentra en el cuadrante
+     */
     private boolean comprobarCuadrante(int fila, int columna, int elemento) {
         boolean resultado = true;
         int ncuadrante = numeroCuadrante(fila, columna);
@@ -314,7 +363,15 @@ public class Sudoku {
         }
         return resultado;
     }
-
+    
+    /**
+     * Comprueba que el elemento se pueda insertar en esa posicion
+     * @param fila Fila que contiene el elemento a modificar
+     * @param columna Columna que contiene el elemento a modificar
+     * @param elemento Elemento a escribir
+     * @return true - si el elemento se puede insertar
+     * @return false - si el elemento no se puede insertar
+     */
     private boolean puedoInsertar(int fila, int columna, int elemento) {
         boolean resultado = false;
         if (comprobarFila(fila, elemento) && comprobarColumna(columna, elemento)
