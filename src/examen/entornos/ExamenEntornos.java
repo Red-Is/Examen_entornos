@@ -16,7 +16,9 @@ public class ExamenEntornos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Sudoku sudoku = new Sudoku();
+        sudoku.inicializar();
+        System.out.println(sudoku.toString());
     }
     
 }

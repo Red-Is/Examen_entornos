@@ -19,13 +19,68 @@ public class Sudoku {
 
     public Sudoku() {
         sudoku = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            ArrayList<Integer> fila = new ArrayList<>();
-        }
     }
 
     public void inicializar() {
-
+        ArrayList<Integer> fila1 = new ArrayList<>();
+        ArrayList<Integer> fila2 = new ArrayList<>();
+        ArrayList<Integer> fila3 = new ArrayList<>();
+        ArrayList<Integer> fila4 = new ArrayList<>();
+        ArrayList<Integer> fila5 = new ArrayList<>();
+        ArrayList<Integer> fila6 = new ArrayList<>();
+        ArrayList<Integer> fila7 = new ArrayList<>();
+        ArrayList<Integer> fila8 = new ArrayList<>();
+        ArrayList<Integer> fila9 = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            fila1.add(0);
+            fila2.add(0);
+            fila3.add(0);
+            fila4.add(0);
+            fila5.add(0);
+            fila6.add(0);
+            fila7.add(0);
+            fila8.add(0);
+            fila9.add(0);
+        }
+        fila1.set(0,5);
+        fila1.set(1,3);
+        fila1.set(4,7);
+        fila2.set(0,6);
+        fila2.set(3,1);
+        fila2.set(4,9);
+        fila2.set(5,5);
+        fila3.set(1,9);
+        fila3.set(2,8);
+        fila3.set(7,6);
+        fila4.set(0,8);
+        fila4.set(4,6);
+        fila4.set(8,3);
+        fila5.set(0,4);
+        fila5.set(3,8);
+        fila5.set(5,3);
+        fila5.set(8,1);
+        fila6.set(0,7);
+        fila6.set(4,2);
+        fila6.set(8,6);
+        fila7.set(1,6);
+        fila8.set(3,4);
+        fila8.set(4,1);
+        fila8.set(5,9);
+        fila8.set(8,5);
+        fila9.set(4,8);
+        fila9.set(7,7);
+        fila9.set(8,9);
+        sudoku.add(fila1);
+        sudoku.add(fila2);
+        sudoku.add(fila3);
+        sudoku.add(fila4);
+        sudoku.add(fila5);
+        sudoku.add(fila6);
+        sudoku.add(fila7);
+        sudoku.add(fila8);
+        sudoku.add(fila9);
+        
+        
     }
 
     @Override
