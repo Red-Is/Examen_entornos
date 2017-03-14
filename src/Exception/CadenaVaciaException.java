@@ -10,7 +10,10 @@ package Exception;
  * @author user
  */
 public class CadenaVaciaException extends Exception {
-
+    /**
+     * Constructor por defecto
+     * @param mensaje Mensaje que lanzará la excepción
+     */
     public CadenaVaciaException(String mensaje) {
         super(mensaje);
     }

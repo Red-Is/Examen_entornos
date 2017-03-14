@@ -10,6 +10,10 @@ package Exception;
  * @author user
  */
 public class SudokuException extends Exception {
+    /**
+     * Constructor por defecto
+     * @param mensaje Mensaje que lanzará la excepción
+     */
     public SudokuException(String mensaje) {
         super(mensaje);
     }
