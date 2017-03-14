@@ -11,14 +11,21 @@ package examen.entornos;
  * @version 1
  */
 public class ExamenEntornos {
-
+    
+    private static void menu() {
+        System.out.println("1. Iniciar/reiniciar Sudoku.\n"
+                + "2. Mostrar Sudoku.\n"
+                + "3. Introducir número.\n"
+                + "4. Borrar número.\n"
+                + "0. Salir.");
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Sudoku sudoku = new Sudoku();
-        sudoku.inicializar();
-        System.out.println(sudoku.toString());
+        
+        
     }
     
 }
